@@ -1,6 +1,17 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Header from "./Components/Layout/Header";
+import Hero from "./Components/Index/Hero";
+
 function App() {
     return (
-        <h1 className="text-7xl">Hello world</h1>
+        <section >
+            <BrowserRouter>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<Hero />} />
+                </Routes>
+            </BrowserRouter>
+        </section>
     );
 }
 
