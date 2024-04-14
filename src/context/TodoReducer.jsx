@@ -5,7 +5,6 @@ const TodoReducer = (
 
     switch (action.type) {
         case "SET_TODOS":
-            console.log(action)
             return {
                 ...state,
                 todos: action.payload
