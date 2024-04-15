@@ -1,5 +1,8 @@
 import { useContext, useEffect, useState } from "react"
 import TodoContext from "../../context/TodoContext"
+import CheckBoxBlank from "../Svg/CheckBoxBlank"
+import CheckBoxDone from "../Svg/CheckBoxDone"
+import Trash from "../Svg/Trash"
 
 const Tasks = ({
 
@@ -32,13 +35,23 @@ const Tasks = ({
                     >Loading...</span>
                 </div>
             </section>}
-            {
-                todos && todos.map(item => {
-                    return <section key={item.id}>
-                        <h1>{item.title}</h1>
-                    </section>
-                })
-            }
+
+            <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                {
+                    todos && todos.map(item => {
+                        return <section
+                            key={item.id}
+                            className={"flex justify-between border-2 rounded items-center px-2 py-4 xl:py-6 " + (item.completed && "bg-gray-200")}
+                        >
+                            <div className="line-clamp-1 text-lg xl:text-xl">{item.completed ? <del>{item.title}</del> : <p>{item.title}</p>}</div>
+                            <div className="flex">
+                                {item.completed ? <CheckBoxDone /> : <CheckBoxBlank />}
+                                <Trash />
+                            </div>
+                        </section>
+                    })
+                }
+            </section>
         </section>
     </>
 }
