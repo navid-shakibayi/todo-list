@@ -9,6 +9,11 @@ const TodoReducer = (
                 ...state,
                 todos: action.payload
             }
+        case "FILTER_TODOS":
+            return {
+                ...state,
+                todos: action.payload
+            }
         case "SET_ERROR":
             return {
                 ...state,

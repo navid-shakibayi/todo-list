@@ -37,8 +37,31 @@ const TodoProvider = ({
         }
     }, [])
 
+    const filterTasksNumber = async (count) => {
+        try {
+            const res = await axios.get(`https://jsonplaceholder.typicode.com/todos?_limit=${count}`)
+            dispatch({
+                type: "FILTER_TODOS",
+                payload: res.data
+            })
+            dispatch({
+                type: "SET_ERROR",
+                payload: null
+            })
+        } catch (err) {
+            dispatch({
+                type: "SET_ERROR",
+                payload: err.message
+            })
+            dispatch({
+                type: "FILTER_TODOS",
+                payload: []
+            })
+        }
+    }
+
     return <>
-        <TodoContext.Provider value={{ ...state, getTasks }}>
+        <TodoContext.Provider value={{ ...state, getTasks, filterTasksNumber }}>
             {children}
         </TodoContext.Provider>
     </>

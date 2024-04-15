@@ -3,6 +3,7 @@ import TodoContext from "../../context/TodoContext"
 import CheckBoxBlank from "../Svg/CheckBoxBlank"
 import CheckBoxDone from "../Svg/CheckBoxDone"
 import Trash from "../Svg/Trash"
+import FilterTask from "./FilterTask"
 
 const Tasks = ({
 
@@ -23,6 +24,9 @@ const Tasks = ({
     return <>
         <section className="max-w-7xl mx-auto px-6">
             <h1 className="text-2xl">Tasks page</h1>
+
+            <FilterTask />
+
             {error && <section>
                 <p className="text-3xl text-center text-red-400">Can not connect to the server</p>
             </section>}
